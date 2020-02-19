@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Service;
+package com.Olympians.Service;
 
 
-import Entite.Matiers;
-import Entite.Notes;
-import IService.IService;
+import com.Olympians.Entite.Matiers;
+import com.Olympians.Entite.Notes;
+import com.Olympians.IService.IService;
 import database.connect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,8 +17,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-/**
+/*
  *
  * @author Bsm
  */
@@ -27,8 +26,7 @@ import java.util.List;
 public class ServiceNotes implements IService<Notes>{
     private Connection con;
     private Statement ste;
-    
-    
+
     public ServiceNotes() {
      
         con = connect.getInstance().getConnection();
@@ -37,7 +35,7 @@ public class ServiceNotes implements IService<Notes>{
         
     @Override   
     public void ajouter(Notes a) throws SQLException {
-        PreparedStatement PS = con.prepareStatement("INSERT INTO `Notes` (`formule`, `id_class`, `id_matiere`, `id_etudent`, `id_prof`, `note`, `remarque`) VALUES ( ?, ?, ?, ?, ?, ?, ?);");
+        PreparedStatement PS = con.prepareStatement("INSERT INTO `notes` (`formule`, `idclasse`, `idmatiere`, `idetudent`, `idprof`, `note`, `remarque`) VALUES ( ?, ?, ?, ?, ?, ?, ?);");
 
         PS.setString(1,a.getFormule());
         PS.setInt(2, a.getId_class());
@@ -52,14 +50,14 @@ public class ServiceNotes implements IService<Notes>{
 
     @Override
     public void delete(int id) throws SQLException {
-        PreparedStatement PS = con.prepareStatement("DELETE FROM `Notes` WHERE `id`=?");
+        PreparedStatement PS = con.prepareStatement("DELETE FROM `notes` WHERE `id`=?");
         PS.setInt(1,id);
         PS.executeUpdate();
     }
 
     @Override
     public void update(Notes a,int id) throws SQLException {
-        PreparedStatement PS=con.prepareStatement("UPDATE `Notes` SET `formule`=?,`id_class`=? , `id_matiere`=? , `id_etudent`=? ,`id_prof`=? ,`note`=? ,`remarque`=? WHERE `id`=?");
+        PreparedStatement PS=con.prepareStatement("UPDATE `notes` SET `formule`=?,`idclasse`=? , `idmatiere`=? , `idetudent`=? ,`idprof`=? ,`note`=? ,`remarque`=? WHERE `id`=?");
         PS.setString(1,a.getFormule());
         PS.setInt(2, a.getId_class());
         PS.setInt(3, a.getId_matiere());
@@ -75,10 +73,10 @@ public class ServiceNotes implements IService<Notes>{
     public List<Notes> readAll() throws SQLException {
         List<Notes> AL = new ArrayList<>();
         ste = con.createStatement();
-        ResultSet rs = ste.executeQuery("select * from Notes");
+        ResultSet rs = ste.executeQuery("select * from notes");
         while (rs.next()) {
             
-            int id = rs.getInt(1);
+            int id = rs.getInt("id");
             String formule = rs.getString(2);
             int id_class = rs.getInt(3);
             int id_matiere = rs.getInt(4);
@@ -98,7 +96,7 @@ public class ServiceNotes implements IService<Notes>{
     public List<Notes> SearchByClass(int id_cls) throws SQLException {
         List<Notes> AL = new ArrayList<>();
         ste = con.createStatement();
-        ResultSet rs = ste.executeQuery("SELECT * FROM `Notes` WHERE id_class ="+id_cls);
+        ResultSet rs = ste.executeQuery("SELECT * FROM `notes` WHERE idclasse ="+id_cls);
         while (rs.next()) {
             
             int id = rs.getInt(1);
@@ -115,11 +113,20 @@ public class ServiceNotes implements IService<Notes>{
             AL.add(a);
         }
         return AL;
+    
     }
+
+          
+                   
+     
+     }
+     
+     
+     
+     
+     
     
     
     
     
-    
-    
-}
+
