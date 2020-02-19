@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="1120.0" prefWidth="1155.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.matiers.matiers">
+   <stylesheets>
+      <URL value="@../../theme/css/material-color.css" />
+      <URL value="@../../theme/css/skeleton.css" />
+      <URL value="@../../theme/css/light.css" />
+      <URL value="@../../theme/css/bootstrap.css" />
+      <URL value="@../../theme/css/simple-green.css" />
+      <URL value="@../../theme/css/shape.css" />
+      <URL value="@../../theme/css/typographic.css" />
+      <URL value="@../../theme/css/helpers.css" />
+      <URL value="@../../theme/css/master.css" />
+   </stylesheets>
+   <children>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0">
+         <content>
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1074.0" prefWidth="1148.0">
+               <children>
+                  <VBox fx:id="gray1" layoutX="22.0" layoutY="32.0" prefHeight="440.0" prefWidth="410.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                     <children>
+                        <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                           <children>
+                              <Label prefHeight="55.0" prefWidth="453.0" styleClass="h3" text="Gestion Matiere ">
+                                 <padding>
+                                    <Insets left="10.0" top="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <VBox prefHeight="52.0" prefWidth="286.0">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#Add" prefWidth="100.0" styleClass="btn-success" text="Ajouter" textAlignment="CENTER">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </Button>
+                                    <Button mnemonicParsing="false" onAction="#Update" prefWidth="100.0" style="-fx-padding: 10;" styleClass="btn-info" text="Modifier">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin></Button>
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#Delete" prefWidth="100.0" styleClass="btn-danger" text="Supprimer" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <AnchorPane prefHeight="306.0" prefWidth="410.0">
+                           <opaqueInsets>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </opaqueInsets>
+                           <children>
+                              <VBox layoutX="22.0" layoutY="14.0" prefHeight="279.0" prefWidth="374.0">
+                                 <children>
+                                    <Label prefHeight="18.0" prefWidth="37.0" text="Nom">
+                                       <VBox.margin>
+                                          <Insets left="20.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField id="nom" fx:id="nom">
+                                       <opaqueInsets>
+                                          <Insets bottom="50.0" />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <Label prefHeight="18.0" prefWidth="82.0" text="Coefficient">
+                                       <VBox.margin>
+                                          <Insets left="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField id="coff" fx:id="coff">
+                                       <opaqueInsets>
+                                          <Insets bottom="50.0" />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <Label prefHeight="18.0" prefWidth="130.0" text="Cheff Module">
+                                       <VBox.margin>
+                                          <Insets left="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField id="cheff" fx:id="cheff">
+                                       <opaqueInsets>
+                                          <Insets bottom="50.0" />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="gray11" layoutX="454.0" layoutY="32.0" prefHeight="440.0" prefWidth="634.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                     <children>
+                        <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                           <children>
+                              <Label prefHeight="55.0" prefWidth="453.0" styleClass="h3" text="List Matiere">
+                                 <padding>
+                                    <Insets left="10.0" top="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <VBox prefHeight="52.0" prefWidth="286.0">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="search" layoutX="104.0" layoutY="12.0" onKeyReleased="#Serach" prefHeight="27.0" prefWidth="259.0" />
+                                    <Label layoutX="29.0" layoutY="16.0" prefHeight="18.0" prefWidth="82.0" text="Recharche" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                        <AnchorPane prefHeight="326.0" prefWidth="652.0">
+                           <children>
+                              <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" onMouseClicked="#GetData" prefHeight="310.0" prefWidth="674.0" style="-fx-border-width: 0;">
+                                 <columns>
+                                    <TableColumn id="C1" fx:id="c1" prefWidth="75.0" text="ID" />
+                                    <TableColumn id="C2" fx:id="c2" prefWidth="200.0" text="NOM" />
+                                    <TableColumn id="C3" fx:id="c3" prefWidth="142.39996337890625" text="COEFFICIENT" />
+                                    <TableColumn id="C4" fx:id="c4" prefWidth="202.40008544921875" text="CHEF MODULES" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</StackPane>
