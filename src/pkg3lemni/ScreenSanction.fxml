@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="643.0" prefWidth="1016.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.Test.Demande.AjouterDemandeController">
+   <children>
+      <Label layoutX="54.0" layoutY="75.0" prefHeight="35.0" prefWidth="274.0" text="Employé Administration">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="55.0" layoutY="130.0" prefHeight="21.0" prefWidth="82.0" text="Elève">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="54.0" layoutY="233.0" prefHeight="35.0" prefWidth="199.0" text="Commentaire">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="55.0" layoutY="177.0" prefHeight="35.0" prefWidth="174.0" text="Nature">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <TextField fx:id="tfEmploye" layoutX="432.0" layoutY="77.0" prefHeight="31.0" prefWidth="352.0" promptText="ID Employé" />
+      <TextField fx:id="tfEleve" layoutX="432.0" layoutY="128.0" prefHeight="31.0" prefWidth="352.0" promptText="ID Elève" />
+      <ComboBox fx:id="cbNature" layoutX="432.0" layoutY="179.0" prefHeight="31.0" prefWidth="352.0" promptText="--Selectionner--" />
+      <Button fx:id="Ajouter" layoutX="825.0" layoutY="302.0" mnemonicParsing="false" onMouseClicked="#AjouterDemande" prefHeight="31.0" prefWidth="161.0" text="Ajouter" />
+      <TableView fx:id="AffichageSanction" layoutX="32.0" layoutY="414.0" prefHeight="200.0" prefWidth="954.0">
+        <columns>
+          <TableColumn fx:id="idtab" prefWidth="69.0" text="Id" />
+          <TableColumn fx:id="employetab" onEditCommit="#Change_Nom" prefWidth="188.0" text="Employé Administration" />
+            <TableColumn fx:id="elevetab" minWidth="0.0" onEditCommit="#Change_Prenom" prefWidth="118.0" text="Elève" />
+            <TableColumn fx:id="naturetab" prefWidth="109.0" text="Nature" />
+            <TableColumn fx:id="commentairetab" onEditCommit="#Change_Numtel" prefWidth="254.0" text="Commentaire" />
+            <TableColumn fx:id="datetimetab" prefWidth="215.0" text="Date &amp; Heure" />
+        </columns>
+      </TableView>
+      <Button fx:id="Supprimer" layoutX="825.0" layoutY="357.0" mnemonicParsing="false" onAction="#ButtonSupprimer" prefHeight="31.0" prefWidth="161.0" text="Supprimer" />
+      <TextField fx:id="recherche" layoutX="432.0" layoutY="357.0" prefHeight="31.0" prefWidth="352.0" promptText="Recherche..." />
+      <Label layoutX="32.0" layoutY="14.0" text="Sanctions" textFill="#ff0080" underline="true">
+         <font>
+            <Font name="Cambria" size="30.0" />
+         </font>
+         <effect>
+            <Glow level="0.29" />
+         </effect></Label>
+      <TextArea fx:id="taCommentaire" layoutX="432.0" layoutY="233.0" prefHeight="101.0" prefWidth="352.0" promptText="Ecrivez votre commentaire ici..." />
+   </children>
+</AnchorPane>
