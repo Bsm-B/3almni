@@ -3,31 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service;
+package pkg3lemni.service;
 
 /**
  *
  * @author Amel
  */
 
-import entity.Sanction;
-import entity.Eleve;
-import entity.Admin;
+import pkg3lemni.entity.Sanction;
+import pkg3lemni.entity.Eleve;
+import pkg3lemni.entity.Admin;
 import java.sql.SQLException;
 import java.util.List;
 import java.sql.*;
 import java.sql.PreparedStatement;
-import utils.DataSource;
+import pkg3lemni.utils.DataBase;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import IService.IServiceSanction;
+import pkg3lemni.IService.IService;
+import java.sql.Timestamp;
 
 /**
  *
- * @author House
+ * @author Amel
  */
-public class SanctionService implements IServiceSanction<Sanction, Eleve, Admin> {
+
+
+public class SanctionService implements IService<Sanction> {
 
     private Connection cnx;
     private Statement ste;
@@ -35,21 +38,22 @@ public class SanctionService implements IServiceSanction<Sanction, Eleve, Admin>
     private ResultSet rs ;
 
     public SanctionService() {
-        cnx = DataSource.getInstance().getCnx();
+        cnx = DataBase.getInstance().getCnx();
         
 
     }
     
 
     @Override
-    public void create(Sanction s, Eleve e,Admin a) throws SQLException {
-        String req = "insert into sanction (nom_admin, nom_eleve, nature, commentaire) values (?,?,?,?);";
+    public void add(Sanction s) throws SQLException {
+        String req = "insert into sanction (id_admin, id_eleve, nature, commentaire, date_time) values (?,?,?,?,?);";
         try {
             pst = cnx.prepareStatement(req);
-            pst.setString(1,a.getNom());
-            pst.setString(2,e.getNom());
+            pst.setInt(1,s.getAdmin().getId());
+            pst.setInt(2,s.getEleve().getId());
             pst.setString(3,s.getNature());
             pst.setString(4,s.getCommentaire());
+            pst.setTimestamp(5,s.getDateTime());
             pst.executeUpdate();
             
         } catch (SQLException ex) {
@@ -60,7 +64,7 @@ public class SanctionService implements IServiceSanction<Sanction, Eleve, Admin>
     @Override
     public void delete(Sanction s)  {
         try {
-            String req = " delete from sanction where id_sanction= ?" ;
+            String req = "delete from sanction where id_sanction= ?" ;
             pst = cnx.prepareStatement(req);
             pst.setInt(1, s.getId());
             pst.executeUpdate();
@@ -73,12 +77,13 @@ public class SanctionService implements IServiceSanction<Sanction, Eleve, Admin>
     @Override
     public void update(Sanction s){
         try {
-            String req = " update sanction set nom_admin=? , nom_eleve=? , nature=? , commentaire=?   where id_sanction='"+s.getId()+"'"  ;
+            String req = "update sanction set nom_admin=? , nom_eleve=? , nature=? , commentaire=?   where id_sanction='"+s.getId()+"'"  ;
             ste = cnx.prepareStatement(req);
-            pst.setString(1,s.getAdmin().getNom());
-            pst.setString(2,s.getEleve().getNom());
+            pst.setInt(1,s.getAdmin().getId());
+            pst.setInt(2,s.getEleve().getId());
             pst.setString(3,s.getNature());
             pst.setString(4,s.getCommentaire());
+            pst.setTimestamp(5,s.getDateTime());
             pst.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(SanctionService.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,19 +91,19 @@ public class SanctionService implements IServiceSanction<Sanction, Eleve, Admin>
     }
 
     @Override
-    public List<Sanction> readAll() throws SQLException {
+    public List<Sanction> display() throws SQLException {
     List<Sanction> list=new ArrayList<>();
     ste=cnx.createStatement();
     String req = "select * from sanction";
     rs=ste.executeQuery(req);
      while (rs.next()) {                
                int id=rs.getInt(1);
-               String matiere=rs.getString(2);
-               Admin Ad = new Admin(rs.getString(2));
-               Eleve E = new Eleve(rs.getString(3));
-               String neutre=rs.getString(4);
+               Admin Ad = new Admin(rs.getInt(2));
+               Eleve E = new Eleve(rs.getInt(3));
+               String nature=rs.getString(4);
                String commentaire=rs.getString(5);
-               Sanction s=new Sanction(id, Ad, E, neutre, commentaire);
+               Timestamp date_time = new Timestamp(System.currentTimeMillis());
+               Sanction s=new Sanction(id, Ad, E, nature, commentaire, date_time);
                list.add(s);
      }
     return list;
@@ -112,12 +117,12 @@ public class SanctionService implements IServiceSanction<Sanction, Eleve, Admin>
     rs=ste.executeQuery(req);
      while (rs.next()) {                
                int id=rs.getInt(1);
-               String matiere=rs.getString(2);
-               Admin Ad = new Admin(rs.getString(2));
-               Eleve E = new Eleve(rs.getString(3));
-               String neutre=rs.getString(4);
+               Admin Ad = new Admin(rs.getInt(2));
+               Eleve E = new Eleve(rs.getInt(3));
+               String nature=rs.getString(4);
                String commentaire=rs.getString(5);
-               Sanction s=new Sanction(id, Ad, E, neutre, commentaire);
+               Timestamp date_time = rs.getTimestamp(6);
+               Sanction s=new Sanction(id, Ad, E, nature, commentaire, date_time);
                list.add(s);
      }
     return list;
@@ -132,12 +137,12 @@ public class SanctionService implements IServiceSanction<Sanction, Eleve, Admin>
             rs=ste.executeQuery(req);
             if (rs.next())
             {
-               String matiere=rs.getString(2);
-               Admin Ad = new Admin(rs.getString(2));
-               Eleve E = new Eleve(rs.getString(3));
-               String neutre=rs.getString(4);
+               Admin Ad = new Admin(rs.getInt(2));
+               Eleve E = new Eleve(rs.getInt(3));
+               String nature=rs.getString(4);
                String commentaire=rs.getString(5);
-               Sanction s=new Sanction(id, Ad, E, neutre, commentaire);
+               Timestamp date_time = rs.getTimestamp(6);
+               Sanction s=new Sanction(id, Ad, E, nature, commentaire, date_time);
                list.add(s);
             }
         } catch (SQLException ex) {
@@ -150,26 +155,24 @@ public class SanctionService implements IServiceSanction<Sanction, Eleve, Admin>
     @Override
     public List<Sanction> searchByName(String nom) throws SQLException {
         List<Sanction> list=new ArrayList<>();
-         String req = " select* from sanction  where (nom_eleve like '"+nom+"%')" ;
+         String req = "select * from sanction  where id_eleve=(select id_eleve from eleve where nom_eleve like '%"+nom+"%')" ;
         
-           
             ste = cnx.createStatement();
             rs=ste.executeQuery(req);
             if (rs.next())
             {
                int id=rs.getInt(1);
-               String matiere=rs.getString(2);
-               Admin Ad = new Admin(rs.getString(2));
-               Eleve E = new Eleve(rs.getString(3));
-               String neutre=rs.getString(4);
+               Admin Ad = new Admin(rs.getInt(2));
+               Eleve E = new Eleve(rs.getInt(3));
+               String nature=rs.getString(4);
                String commentaire=rs.getString(5);
-               Sanction s=new Sanction(id, Ad, E, neutre, commentaire);
+               Timestamp date_time = rs.getTimestamp(6);
+               Sanction s=new Sanction(id, Ad, E, nature, commentaire, date_time);
                list.add(s);
-        
-        
-        
         }
         return list ;
     }
+    
+    
 
 }
