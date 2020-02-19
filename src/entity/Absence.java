@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entity;
+package pkg3lemni.entity;
 
-import java.sql.Date;
+import static java.sql.JDBCType.NULL;
+import java.sql.Timestamp;
 
 /**
  *
@@ -13,29 +14,41 @@ import java.sql.Date;
  */
 public class Absence {
     private int id;
-    private String matiere;
-    private String date;
-    private String heure;
+    private Matiere matiere;
+    private Classe classe;
+    private Timestamp date_time;
     private Eleve eleve;
+    private Employe employe;
     
     public Absence(int id) {
         this.id = id;
     }
     
 
-    public Absence(int id, String matiere, String date, String heure, Eleve eleve) {
+    public Absence(int id, Matiere matiere, Classe classe, Timestamp date_time, Eleve eleve) {
         this.id = id;
         this.matiere = matiere;
-        this.date = date;
-        this.heure = heure;
+        this.classe = classe;
+        this.date_time = date_time;
+        this.eleve = eleve;
+    }
+    
+    public Absence(int id, Timestamp date_time, Employe employe) {
+        this.id = id;
+        this.date_time = date_time;
+        this.employe = employe;
+    }
+    
+    public Absence(Matiere matiere, Classe classe, Timestamp date_time, Eleve eleve) {
+        this.matiere = matiere;
+        this.classe = classe;
+        this.date_time = date_time;
         this.eleve = eleve;
     }
 
-    public Absence(String matiere, String date, String heure, Eleve eleve) {
-        this.matiere = matiere;
-        this.date = date;
-        this.heure = heure;
-        this.eleve = eleve;
+    public Absence(Timestamp date_time, Employe employe) {
+        this.date_time = date_time;
+        this.employe = employe;
     }
 
     public int getId() {
@@ -46,28 +59,32 @@ public class Absence {
         this.id = id;
     }
 
-    public String getMatiere() {
+    public Matiere getMatiere() {
         return matiere;
     }
 
-    public void setMatiere(String matiere) {
+    public void setMatiere(Matiere matiere) {
         this.matiere = matiere;
     }
-
-    public String getDate() {
-        return date;
+    
+    public Classe getClasse() {
+        return classe;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setClasse(Classe classe) {
+        this.classe = classe;
     }
 
-    public String getHeure() {
-        return heure;
+    public Timestamp getDateTime() {
+        return date_time;
     }
 
-    public void setHeure(String heure) {
-        this.heure = heure;
+    /**
+     *
+     * @param date_time
+     */
+    public void setDateTime(Timestamp date_time) {
+        this.date_time = date_time;
     }
     
     public Eleve getEleve() {
@@ -77,10 +94,26 @@ public class Absence {
     public void setEleve(Eleve eleve) {
         this.eleve = eleve;
     }
+    
+    public Employe getEmploye() {
+        return employe;
+    }
 
-    @Override
-    public String toString() {
-        return "Absence{" + "id = " + id + ", matiere = " + matiere + ", date = " + date + ", heure = " + heure + ", eleve = " + eleve.getNom() + '}';
+    public void setEmploye(Employe eleve) {
+        this.employe = employe;
     }
     
+
+    /*
+    @Override
+    public String toString() {
+        if (eleve.getId()!=0){
+            return "Absence{" + "id = " + id + ", id_matiere = " + matiere.getId() + ", id_classe = " + classe.getId() + ", date_time = " + date_time + ", id_eleve = " + eleve.getId() + "}";
+        }
+        if (employe.getId()!=0){
+            return "Absence{" + "id = " + id + ", date_time = " + date_time + ", id_employe = " + employe.getId() + "}";
+        }
+        return "";
+    
+}*/
 }

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entity;
+package pkg3lemni.entity;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -17,20 +17,30 @@ public class Sanction {
     private Eleve eleve;
     private String nature;
     private String commentaire;
+    private Timestamp date_time;
     
     public Sanction(int id) {
         this.id = id;
     }
     
 
-    public Sanction(int id, Admin admin, Eleve eleve, String nature, String commentaire) {
+    public Sanction(int id, Admin admin, Eleve eleve, String nature, String commentaire, Timestamp date_time) {
         this.id = id;
         this.admin = admin;
         this.eleve = eleve;
         this.nature = nature;
         this.commentaire = commentaire;
+        this.date_time = date_time;
     }
 
+    public Sanction(Admin admin, Eleve eleve, String nature, String commentaire, Timestamp date_time) {
+        this.admin = admin;
+        this.eleve = eleve;
+        this.nature = nature;
+        this.commentaire = commentaire;
+        this.date_time = date_time;
+    }
+    
     public Sanction(Admin admin, Eleve eleve, String nature, String commentaire) {
         this.admin = admin;
         this.eleve = eleve;
@@ -77,10 +87,18 @@ public class Sanction {
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
     }
+    
+    public Timestamp getDateTime() {
+        return date_time;
+    }
+
+    public void setDate(Timestamp date_time) {
+        this.date_time = date_time;
+    }
 
     @Override
     public String toString() {
-        return "Sanction{" + "id = " + id + ", admin = " + admin.getNom() + ", eleve = " + eleve.getNom() + ", nature = " + nature + ", commentaire = " + commentaire + '}';
+        return "Sanction{" + "id = " + id + ", admin = " + admin.getId() + ", eleve = " + eleve.getId() + ", nature = " + nature + ", commentaire = " + commentaire + ", date_time = " + date_time + '}';
     }
     
 }
