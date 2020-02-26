@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<StackPane prefHeight="1120.0" prefWidth="1510.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.club.ClubsController">
+   <children>
+      <TabPane prefHeight="877.0" prefWidth="1000.0">
+         <tabs>
+            <Tab closable="false" text="Gestion">
+               <content>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1071.0" prefWidth="1509.0">
+                           <children>
+                              <VBox alignment="CENTER" layoutX="10.0" prefHeight="1016.0" prefWidth="1498.0" spacing="10.0">
+                                 <children>
+                                    <HBox prefHeight="896.0" prefWidth="1465.0">
+                                       <children>
+                                          <VBox prefHeight="851.0" prefWidth="375.0">
+                                             <children>
+                                                <VBox prefHeight="351.0" prefWidth="455.0" style="-fx-border-color: -separator-color; -fx-background-color: -background-color;" styleClass="raised">
+                                                   <children>
+                                                      <Label prefHeight="55.0" prefWidth="453.0" styleClass="h3" text="Gérer les Clubs">
+                                                         <padding>
+                                                            <Insets left="10.0" top="10.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <VBox>
+                                                         <children>
+                                                            <TextField fx:id="nom" prefHeight="53.0" prefWidth="453.0" promptText="Nom" styleClass="field-outlined" />
+                                                            <ComboBox fx:id="categorie" prefHeight="30.0" prefWidth="179.0" promptText="categorie">
+                                                               <items>
+                                                                  <FXCollections fx:factory="observableArrayList">
+                                                                     <String fx:value="Item 1" />
+                                                                     <String fx:value="Item 2" />
+                                                                     <String fx:value="Item 3" />
+                                                                     <String fx:value="Item 3" />
+                                                                     <String fx:value="Item 3" />
+                                                                     <String fx:value="Item 3" />
+                                                                     <String fx:value="Item 3" />
+                                                                     <String fx:value="Item 3" />
+                                                                     <String fx:value="Item 3" />
+                                                                  </FXCollections>
+                                                               </items>
+                                                               <contextMenu>
+                                                                  <ContextMenu>
+                                                                     <items>
+                                                                        <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                                                     </items>
+                                                                  </ContextMenu>
+                                                               </contextMenu>
+                                                            </ComboBox>
+                                                            <TextField fx:id="description" prefHeight="53.0" prefWidth="453.0" promptText="Description" styleClass="field-outlined" />
+                                                            <DatePicker fx:id="date_fondation" prefHeight="27.0" prefWidth="360.0" />
+                                                            <TextField fx:id="nbmembres" prefHeight="53.0" prefWidth="453.0" promptText="Nombre de membres" styleClass="field-outlined" />
+                                                            <TextField fx:id="responsable" prefHeight="53.0" prefWidth="453.0" promptText="Responsable" styleClass="field-outlined" />
+                                                         </children>
+                                                      </VBox>
+                                                      <HBox alignment="BOTTOM_RIGHT" prefHeight="78.0" prefWidth="448.0" VBox.vgrow="ALWAYS">
+                                                         <VBox.margin>
+                                                            <Insets bottom="5.0" right="5.0" />
+                                                         </VBox.margin>
+                                                         <children>
+                                                            <Button mnemonicParsing="false" onAction="#Delete" prefHeight="68.0" prefWidth="110.0" styleClass="btn-danger" text="Supprimer" translateX="-30.0" />
+                                                            <Button mnemonicParsing="false" onAction="#Update" prefHeight="68.0" prefWidth="100.0" styleClass="btn-info" text="Modifier" translateX="-20.0" />
+                                                            <Button mnemonicParsing="false" onAction="#Add" prefHeight="68.0" prefWidth="105.0" styleClass="btn-success" text="Ajouter" translateX="-10.0" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="35.0" prefWidth="455.0">
+                                                   <children>
+                                                      <Accordion />
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="55.0" prefWidth="455.0" style="-fx-border-color: -separator-color; -fx-background-color: -background-color;" styleClass="raised">
+                                                   <children>
+                                                      <VBox />
+                                                      <HBox alignment="BOTTOM_RIGHT" prefHeight="48.0" prefWidth="336.0" VBox.vgrow="ALWAYS">
+                                                         <VBox.margin>
+                                                            <Insets bottom="5.0" right="5.0" />
+                                                         </VBox.margin>
+                                                         <children>
+                                                            <Button mnemonicParsing="false" onAction="#Excel" prefHeight="68.0" prefWidth="103.0" styleClass="deep-button" text="Excel" translateX="-30.0" />
+                                                            <Button mnemonicParsing="false" onAction="#handle" prefHeight="68.0" prefWidth="103.0" styleClass="deep-button" text="PDF" translateX="-20.0" />
+                                                            <Button mnemonicParsing="false" prefHeight="68.0" prefWidth="98.0" styleClass="deep-button" text="Print" translateX="-10.0" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="35.0" prefWidth="455.0">
+                                                   <children>
+                                                      <Accordion />
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="312.0" prefWidth="357.0" style="-fx-border-color: -separator-color; -fx-background-color: -background-color;" styleClass="raised">
+                                                   <children>
+                                                      <VBox prefHeight="0.0" prefWidth="355.0" />
+                                                      <Button mnemonicParsing="false" onAction="#Notification" prefHeight="68.0" prefWidth="103.0" styleClass="deep-orange" text="Notification" />
+                                                      <HBox alignment="BOTTOM_RIGHT" prefHeight="22.0" prefWidth="350.0" VBox.vgrow="ALWAYS">
+                                                         <VBox.margin>
+                                                            <Insets bottom="5.0" right="5.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                      <TextField fx:id="email" prefHeight="53.0" prefWidth="453.0" promptText="email" styleClass="field-outlined" />
+                                                      <TextField fx:id="objet" prefHeight="53.0" prefWidth="453.0" promptText="objet" styleClass="field-outlined" />
+                                                      <TextField fx:id="corp" prefHeight="53.0" prefWidth="453.0" promptText="corp" styleClass="field-outlined" />
+                                                      <Button mnemonicParsing="false" onAction="#sendmail" prefHeight="68.0" prefWidth="109.0" styleClass="deep-button" text="Send" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                          <HBox prefHeight="767.0" prefWidth="38.0">
+                                             <children>
+                                                <TextFlow prefHeight="18.0" prefWidth="428.0" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="851.0" prefWidth="753.0">
+                                             <children>
+                                                <VBox prefHeight="464.0" prefWidth="563.0" style="-fx-border-color: -separator-color; -fx-background-color: -background-color;" styleClass="raised">
+                                                   <children>
+                                                      <TextField fx:id="nomS" onKeyReleased="#Search" prefHeight="45.0" prefWidth="472.0" promptText="Search..." styleClass="field-outlined" />
+                                                      <TableView fx:id="tableView" prefHeight="418.0" prefWidth="563.0">
+                                                         <columns>
+                                                            <TableColumn fx:id="c1" text="ID" />
+                                                            <TableColumn fx:id="c2" text="Nom" />
+                                                            <TableColumn fx:id="c3" text="Categorie" />
+                                                            <TableColumn fx:id="c4" text="Description" />
+                                                            <TableColumn fx:id="c5" text="Date Fondation" />
+                                                            <TableColumn fx:id="c6" text="Nb membres" />
+                                                            <TableColumn fx:id="c7" text="Responsable" />
+                                                         </columns>
+                                                         <columnResizePolicy>
+                                                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                         </columnResizePolicy>
+                                                      </TableView>
+                                                   </children>
+                                                </VBox>
+                                                <HBox alignment="CENTER" prefHeight="397.0" prefWidth="753.0" spacing="10.0">
+                                                   <children>
+                                                      <PieChart fx:id="bookChart" prefHeight="388.0" prefWidth="482.0" title="Clubs" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <HBox prefHeight="896.0" prefWidth="25.0" />
+                                          <VBox prefHeight="896.0" prefWidth="264.0">
+                                             <children>
+                                                <HBox prefHeight="58.0" prefWidth="100.0" />
+                                                <Pane prefHeight="107.0" prefWidth="753.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER" layoutX="13.0" layoutY="-34.0" prefHeight="60.0" prefWidth="104.0">
+                                                         <children>
+                                                            <SVGPath content="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="WHITE" scaleX="2.0" scaleY="2.0">
+                                                               <effect>
+                                                                  <Glow />
+                                                               </effect>
+                                                            </SVGPath>
+                                                         </children>
+                                                         <styleClass>
+                                                            <String fx:value="scale" />
+                                                            <String fx:value="secondary" />
+                                                         </styleClass>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                      </VBox>
+                                                      <Label layoutX="13.0" layoutY="35.0" minHeight="5.0" prefHeight="5.0" prefWidth="238.0" styleClass="secondary" />
+                                                      <Label alignment="CENTER_RIGHT" layoutX="160.0" layoutY="-34.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h4" text="Registered" textFill="#8d8b8b">
+                                                         <font>
+                                                            <Font name="Roboto Black" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="label" alignment="TOP_RIGHT" layoutX="159.0" layoutY="2.0" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h5">
+                                                         <font>
+                                                            <Font name="Roboto Black" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" layoutX="17.0" layoutY="40.0" prefHeight="18.0" prefWidth="238.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="Total number of clubs" textAlignment="RIGHT">
+                                                         <font>
+                                                            <Font name="Roboto" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <effect>
+                                                      <DropShadow color="#0000001a" />
+                                                   </effect>
+                                                </Pane>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="30.0" right="30.0" top="100.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab text="eleves">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="51.0" prefHeight="851.0" prefWidth="753.0">
+                           <children>
+                              <VBox prefHeight="464.0" prefWidth="563.0" style="-fx-border-color: -separator-color; -fx-background-color: -background-color;" styleClass="raised">
+                                 <children>
+                                    <TextField fx:id="nomS1" onKeyReleased="#Search" prefHeight="45.0" prefWidth="472.0" promptText="Search..." styleClass="field-outlined" />
+                                    <TableView fx:id="tableView1" prefHeight="418.0" prefWidth="563.0">
+                                       <columns>
+                                          <TableColumn fx:id="c11" text="ID" />
+                                          <TableColumn fx:id="c21" text="Nom" />
+                                          <TableColumn fx:id="c31" text="Categorie" />
+                                          <TableColumn fx:id="c41" text="Description" />
+                                          <TableColumn fx:id="c51" text="Date Fondation" />
+                                          <TableColumn fx:id="c61" text="Nb membres" />
+                                          <TableColumn fx:id="c71" text="Responsable" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                              <HBox alignment="CENTER" prefHeight="397.0" prefWidth="753.0" spacing="10.0">
+                                 <children>
+                                    <PieChart fx:id="bookChart1" prefHeight="388.0" prefWidth="482.0" title="Clubs" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Parents">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab text="Professeur">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+   <stylesheets>
+      <URL value="@../../theme/css/material-color.css" />
+      <URL value="@../../theme/css/skeleton.css" />
+      <URL value="@../../theme/css/light.css" />
+      <URL value="@../../theme/css/bootstrap.css" />
+      <URL value="@../../theme/css/simple-green.css" />
+      <URL value="@../../theme/css/shape.css" />
+      <URL value="@../../theme/css/typographic.css" />
+      <URL value="@../../theme/css/helpers.css" />
+      <URL value="@../../theme/css/master.css" />
+   </stylesheets>
+</StackPane>
